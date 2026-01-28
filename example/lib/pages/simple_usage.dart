@@ -25,6 +25,8 @@ class TimelineScreen extends StatelessWidget {
           return ChainedTile(
             tileIndex: index,
             totalCount: items.length,
+            strokeWidth: 6,
+            iconSize: 25,
             color: index < 5 ? Colors.green : Colors.blue,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

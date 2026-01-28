@@ -6,19 +6,21 @@ class ChainedPainter extends CustomPainter {
     required this.color,
     required this.backgroundColor,
     required this.tilePosition,
-    this.iconSize = 16,
+    required this.strokeWidth,
+    required this.iconSize,
   });
 
   final Color color;
   final Color backgroundColor;
   final TilePosition tilePosition;
-  final double iconSize;
+  final double? iconSize;
+  final double strokeWidth;
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = color
-      ..strokeWidth = 2
+      ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
 
     final double centerX = size.width / 2;
@@ -27,14 +29,14 @@ class ChainedPainter extends CustomPainter {
     switch (tilePosition) {
       case TilePosition.first:
         canvas.drawLine(
-          Offset(centerX, centerY + (iconSize / 2)),
+          Offset(centerX, centerY),
           Offset(centerX, size.height),
           paint,
         );
       case TilePosition.last:
         canvas.drawLine(
           Offset(centerX, 0),
-          Offset(centerX, centerY - (iconSize / 2)),
+          Offset(centerX, centerY),
           paint,
         );
       case TilePosition.middle:
@@ -46,25 +48,29 @@ class ChainedPainter extends CustomPainter {
       case TilePosition.theOnly:
     }
 
-    // 3. Draw the center circle
-    final circlePaint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
+    final outerRadius = iconSize;
+    if (outerRadius != null) {
+      // outer circle
+      final circlePaint = Paint()
+        ..color = color
+        ..style = PaintingStyle.fill;
 
-    canvas.drawCircle(Offset(centerX, centerY), iconSize / 2, circlePaint);
+      canvas.drawCircle(Offset(centerX, centerY), outerRadius / 2, circlePaint);
 
-    // drawing white circle over colored because inner backgroundColor may be 
-    // semi-transparent and thus mixed with outer circle color
-    canvas.drawCircle(
-      Offset(centerX, centerY),
-      iconSize / 4,
-      Paint()..color = Colors.white,
-    );
-    canvas.drawCircle(
-      Offset(centerX, centerY),
-      iconSize / 4,
-      Paint()..color = backgroundColor,
-    );
+      final innerRadius = outerRadius - strokeWidth * 2;
+      // drawing white circle over colored because inner backgroundColor may be
+      // semi-transparent and thus mixed with outer circle color
+      canvas.drawCircle(
+        Offset(centerX, centerY),
+        innerRadius / 2,
+        Paint()..color = Colors.white,
+      );
+      canvas.drawCircle(
+        Offset(centerX, centerY),
+        innerRadius / 2,
+        Paint()..color = backgroundColor,
+      );
+    }
   }
 
   @override
