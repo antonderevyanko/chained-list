@@ -24,15 +24,17 @@ class ChainedTile extends StatelessWidget {
   final int totalCount;
   final Color color;
   final Color backgroundColor;
+  final double indicatorWidth = 50.0;
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        children: [
-          SizedBox(
-            width: 50,
-            height: double.infinity,
+    return Stack(
+      children: [
+        Positioned.fill(
+          left: 0,
+          right: null,
+          child: SizedBox(
+            width: indicatorWidth,
             child: CustomPaint(
               painter: ChainedPainter(
                 color: color,
@@ -44,14 +46,17 @@ class ChainedTile extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-              child: child,
-            ),
+        ),
+
+        Padding(
+          padding: EdgeInsets.only(left: indicatorWidth),
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 60),
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+            child: child,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
