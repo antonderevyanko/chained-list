@@ -39,22 +39,26 @@ class TimelineScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
-          return ChainedTile(
-            tileIndex: index,
-            totalCount: items.length,
-            color: index < 3 ? Colors.green : Colors.grey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  items[index],
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                Text(
-                  'Update received at 12:00 PM',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ],
+          return ColoredBox(
+            color: Colors.amber.withAlpha(60),
+            child: ChainedTile(
+              tileIndex: index,
+              totalCount: items.length,
+              color: index < 3 ? Colors.green : Colors.blue,
+              backgroundColor: Colors.amber.withAlpha(60),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    items[index],
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  Text(
+                    'Update received at 12:00 PM',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
             ),
           );
         },

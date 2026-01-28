@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class ChainedPainter extends CustomPainter {
   ChainedPainter({
     required this.color,
+    required this.backgroundColor,
     required this.tilePosition,
     this.iconSize = 16,
   });
 
   final Color color;
+  final Color backgroundColor;
   final TilePosition tilePosition;
   final double iconSize;
 
@@ -51,11 +53,17 @@ class ChainedPainter extends CustomPainter {
 
     canvas.drawCircle(Offset(centerX, centerY), iconSize / 2, circlePaint);
 
-    // Optional: Draw a smaller white dot inside for a "hollow" look
+    // drawing white circle over colored because inner backgroundColor may be 
+    // semi-transparent and thus mixed with outer circle color
     canvas.drawCircle(
       Offset(centerX, centerY),
       iconSize / 4,
       Paint()..color = Colors.white,
+    );
+    canvas.drawCircle(
+      Offset(centerX, centerY),
+      iconSize / 4,
+      Paint()..color = backgroundColor,
     );
   }
 

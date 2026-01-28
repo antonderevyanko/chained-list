@@ -9,6 +9,7 @@ class ChainedTile extends StatelessWidget {
     required this.tileIndex,
     required this.totalCount,
     this.color = Colors.blue,
+    this.backgroundColor = Colors.white,
   }) : assert(
          tileIndex >= 0 && totalCount >= 0,
          'Total count of items and index should be greater or equals zero',
@@ -22,6 +23,7 @@ class ChainedTile extends StatelessWidget {
   final int tileIndex;
   final int totalCount;
   final Color color;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class ChainedTile extends StatelessWidget {
             child: CustomPaint(
               painter: ChainedPainter(
                 color: color,
+                backgroundColor: backgroundColor,
                 tilePosition: TilePosition.positionBy(
                   index: tileIndex,
                   length: totalCount,
