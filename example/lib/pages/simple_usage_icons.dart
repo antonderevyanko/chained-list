@@ -29,9 +29,9 @@ class TimelineScreenIcons extends StatelessWidget {
               color: index < 5 ? Colors.green : Colors.blue,
               strokeWidth: 4,
             ),
-            indicatorStyle: IconIndicatorStyle(
+            iconStyle: IconIndicatorStyle(
               icon: items[index].icon,
-              iconSize: 10,
+              iconSize: 24,
               color: index < 5 ? Colors.green : Colors.blue,
             ),
             child: Column(

@@ -29,7 +29,7 @@ class TimelineScreenCircles extends StatelessWidget {
               color: index < 5 ? Colors.green : Colors.blue,
               strokeWidth: 5,
             ),
-            indicatorStyle: CircleIndicatorStyle(
+            circleStyle: CircleIndicatorStyle(
               paintingStyle: index < 5 ? PaintingStyle.fill : PaintingStyle.stroke,
               radius: 25,
               color: index < 5 ? Colors.green : Colors.blue,

@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 class ChainedPainter extends CustomPainter {
   ChainedPainter({
     required this.lineStyle,
-    required this.indicatorStyle,
     required this.tilePosition,
     required this.centerPadding,
   });
 
+
   final ChainLineStyle lineStyle;
-  final ChainIndicatorStyle indicatorStyle;
   final TilePosition tilePosition;
   final double centerPadding;
 
