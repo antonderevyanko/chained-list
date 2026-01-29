@@ -1,4 +1,5 @@
-import 'package:example/pages/simple_usage.dart';
+import 'package:example/pages/simple_usage_circles.dart';
+import 'package:example/pages/simple_usage_icons.dart';
 import 'package:flutter/material.dart';
 
 class LibraryExample {
@@ -13,14 +14,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List of your library use cases
     final List<LibraryExample> examples = [
-      LibraryExample(title: 'Basic Usage', page: const TimelineScreen()),
-      // LibraryExample(
-      //   title: 'Advanced Filtering',
-      //   page: const AdvancedExamplePage(),
-      // ),
-      // LibraryExample(title: 'Custom Themes', page: const ThemeExamplePage()),
+      LibraryExample(title: 'Basic Usage - lines and circles', page: const TimelineScreenCircles()),
+      LibraryExample(title: 'Basic Usage - lines and icons', page: const TimelineScreenIcons()),
     ];
 
     return Scaffold(

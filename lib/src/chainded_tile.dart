@@ -12,6 +12,7 @@ class ChainedTile extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.strokeWidth = 2,
     this.iconSize,
+    this.icon,
   }) : assert(
          tileIndex >= 0 && totalCount >= 0,
          'Total count of items and index should be greater or equals zero',
@@ -31,8 +32,11 @@ class ChainedTile extends StatelessWidget {
   final Color color;
   final Color backgroundColor;
   final double indicatorWidth = 50.0;
+  final IconData? icon;
+
   /// width of lines and inner circle
   final double strokeWidth;
+
   /// defines width and height of center circle. if null -> no inner circle will be drawn
   final double? iconSize;
 
@@ -59,6 +63,24 @@ class ChainedTile extends StatelessWidget {
             ),
           ),
         ),
+
+        if (icon != null)
+          Positioned.fill(
+            left: 0,
+            right: null,
+            child: SizedBox(
+              width: indicatorWidth,
+              child: Center(
+                child: SizedBox(
+                  child: Icon(
+                    icon,
+                    color: color,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
 
         Padding(
           padding: EdgeInsets.only(left: indicatorWidth),

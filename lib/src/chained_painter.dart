@@ -29,19 +29,24 @@ class ChainedPainter extends CustomPainter {
     switch (tilePosition) {
       case TilePosition.first:
         canvas.drawLine(
-          Offset(centerX, centerY),
+          Offset(centerX, centerY + 10),
           Offset(centerX, size.height),
           paint,
         );
       case TilePosition.last:
         canvas.drawLine(
+          Offset(centerX, centerY - 10),
           Offset(centerX, 0),
-          Offset(centerX, centerY),
           paint,
         );
       case TilePosition.middle:
         canvas.drawLine(
           Offset(centerX, 0),
+          Offset(centerX, centerY - 10),
+          paint,
+        );
+        canvas.drawLine(
+          Offset(centerX, centerY + 10),
           Offset(centerX, size.height),
           paint,
         );

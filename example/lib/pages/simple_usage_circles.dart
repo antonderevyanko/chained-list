@@ -1,8 +1,8 @@
 import 'package:chained_list/chained_list.dart';
 import 'package:flutter/material.dart';
 
-class TimelineScreen extends StatelessWidget {
-  const TimelineScreen({super.key});
+class TimelineScreenCircles extends StatelessWidget {
+  const TimelineScreenCircles({super.key});
 
   @override
   Widget build(BuildContext context) {
