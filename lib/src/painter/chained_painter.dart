@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 class ChainedPainter extends CustomPainter {
   ChainedPainter({
     required this.lineStyle,
-    required this.backgroundColor,
+    required this.indicatorStyle,
     required this.tilePosition,
-    required this.iconSize,
+    required this.centerPadding,
   });
 
   final ChainLineStyle lineStyle;
-  final Color backgroundColor;
+  final ChainIndicatorStyle indicatorStyle;
   final TilePosition tilePosition;
-  final double? iconSize;
+  final double centerPadding;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -27,38 +27,28 @@ class ChainedPainter extends CustomPainter {
     switch (tilePosition) {
       case TilePosition.first:
         canvas.drawLine(
-          Offset(centerX, centerY + 10),
+          Offset(centerX, centerY + centerPadding),
           Offset(centerX, size.height),
           paint,
         );
       case TilePosition.last:
         canvas.drawLine(
-          Offset(centerX, centerY - 10),
+          Offset(centerX, centerY - centerPadding),
           Offset(centerX, 0),
           paint,
         );
       case TilePosition.middle:
         canvas.drawLine(
           Offset(centerX, 0),
-          Offset(centerX, centerY - 10),
+          Offset(centerX, centerY - centerPadding),
           paint,
         );
         canvas.drawLine(
-          Offset(centerX, centerY + 10),
+          Offset(centerX, centerY + centerPadding),
           Offset(centerX, size.height),
           paint,
         );
       case TilePosition.theOnly:
-    }
-
-    final outerRadius = iconSize;
-    if (outerRadius != null) {
-      final circlePaint = Paint()
-        ..color = lineStyle.color
-        ..strokeWidth = lineStyle.strokeWidth
-        ..style = PaintingStyle.stroke;
-
-      canvas.drawCircle(Offset(centerX, centerY), outerRadius / 2, circlePaint);
     }
   }
 

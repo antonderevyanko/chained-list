@@ -1,5 +1,6 @@
 import 'package:chained_list/chained_list.dart';
-import 'package:chained_list/src/chained_painter.dart';
+import 'package:chained_list/src/painter/chained_painter.dart';
+import 'package:chained_list/src/painter/circe_painter.dart';
 import 'package:chained_list/src/tile_position.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +11,7 @@ class ChainedTile extends StatelessWidget {
     required this.tileIndex,
     required this.totalCount,
     required this.lineStyle,
-    this.backgroundColor = Colors.white,
-    this.iconSize,
-    this.icon,
+    required this.indicatorStyle,
   }) : assert(
          tileIndex >= 0 && totalCount >= 0,
          'Total count of items and index should be greater or equals zero',
@@ -20,27 +19,18 @@ class ChainedTile extends StatelessWidget {
        assert(
          totalCount >= tileIndex,
          'Tile index shlould not be greater total count',
-       )
-      //  ,
-      //  assert(
-      //    iconSize != null ? (iconSize / 2 - lineStyle.strokeWidth) > 0 : true,
-      //    'Stroke width is too small to draw center circle',
-      //  )
-       ;
+       );
 
   final Widget child;
   final int tileIndex;
   final int totalCount;
-  final Color backgroundColor;
   final double indicatorWidth = 50.0;
-  final IconData? icon;
   final ChainLineStyle lineStyle;
-
-  /// defines width and height of center circle. if null -> no inner circle will be drawn
-  final double? iconSize;
+  final ChainIndicatorStyle indicatorStyle;
 
   @override
   Widget build(BuildContext context) {
+    final currentIndicatorStyle = indicatorStyle;
     return Stack(
       children: [
         Positioned.fill(
@@ -51,8 +41,11 @@ class ChainedTile extends StatelessWidget {
             child: CustomPaint(
               painter: ChainedPainter(
                 lineStyle: lineStyle,
-                backgroundColor: backgroundColor,
-                iconSize: iconSize,
+                indicatorStyle: currentIndicatorStyle,
+                centerPadding: switch (currentIndicatorStyle) {
+                  CircleIndicatorStyle() => currentIndicatorStyle.radius / 2,
+                  IconIndicatorStyle() => currentIndicatorStyle.iconSize,
+                },
                 tilePosition: TilePosition.positionBy(
                   index: tileIndex,
                   length: totalCount,
@@ -62,8 +55,24 @@ class ChainedTile extends StatelessWidget {
           ),
         ),
 
-        if (icon != null)
-          Positioned.fill(
+        switch (currentIndicatorStyle) {
+          CircleIndicatorStyle() => Positioned.fill(
+            left: 0,
+            right: null,
+            child: SizedBox(
+              width: indicatorWidth,
+              child: CustomPaint(
+                painter: CirclePainter(
+                  indicatorStyle: currentIndicatorStyle,
+                  tilePosition: TilePosition.positionBy(
+                    index: tileIndex,
+                    length: totalCount,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          IconIndicatorStyle() => Positioned.fill(
             left: 0,
             right: null,
             child: SizedBox(
@@ -71,7 +80,7 @@ class ChainedTile extends StatelessWidget {
               child: Center(
                 child: SizedBox(
                   child: Icon(
-                    icon,
+                    currentIndicatorStyle.icon,
                     color: lineStyle.color,
                     fontWeight: FontWeight.bold,
                   ),
@@ -79,6 +88,7 @@ class ChainedTile extends StatelessWidget {
               ),
             ),
           ),
+        },
 
         Padding(
           padding: EdgeInsets.only(left: indicatorWidth),

@@ -29,8 +29,11 @@ class TimelineScreenIcons extends StatelessWidget {
               color: index < 5 ? Colors.green : Colors.blue,
               strokeWidth: 4,
             ),
-            iconSize: 35,
-            icon: items[index].icon,
+            indicatorStyle: IconIndicatorStyle(
+              icon: items[index].icon,
+              iconSize: 10,
+              color: index < 5 ? Colors.green : Colors.blue,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

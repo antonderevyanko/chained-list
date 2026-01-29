@@ -27,9 +27,14 @@ class TimelineScreenCircles extends StatelessWidget {
             totalCount: items.length,
             lineStyle: ChainLineStyle(
               color: index < 5 ? Colors.green : Colors.blue,
-              strokeWidth: 6,
+              strokeWidth: 5,
             ),
-            iconSize: 25,
+            indicatorStyle: CircleIndicatorStyle(
+              paintingStyle: index < 5 ? PaintingStyle.fill : PaintingStyle.stroke,
+              radius: 25,
+              color: index < 5 ? Colors.green : Colors.blue,
+              strokeWidth: 5
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
