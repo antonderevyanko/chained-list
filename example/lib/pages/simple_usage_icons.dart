@@ -25,10 +25,12 @@ class TimelineScreenIcons extends StatelessWidget {
           return ChainedTile(
             tileIndex: index,
             totalCount: items.length,
-            strokeWidth: 4,
+            lineStyle: ChainLineStyle(
+              color: index < 5 ? Colors.green : Colors.blue,
+              strokeWidth: 4,
+            ),
             iconSize: 35,
             icon: items[index].icon,
-            color: index < 5 ? Colors.green : Colors.blue,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

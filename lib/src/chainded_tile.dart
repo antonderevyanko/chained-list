@@ -1,3 +1,4 @@
+import 'package:chained_list/chained_list.dart';
 import 'package:chained_list/src/chained_painter.dart';
 import 'package:chained_list/src/tile_position.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +9,8 @@ class ChainedTile extends StatelessWidget {
     required this.child,
     required this.tileIndex,
     required this.totalCount,
-    this.color = Colors.blue,
+    required this.lineStyle,
     this.backgroundColor = Colors.white,
-    this.strokeWidth = 2,
     this.iconSize,
     this.icon,
   }) : assert(
@@ -20,22 +20,21 @@ class ChainedTile extends StatelessWidget {
        assert(
          totalCount >= tileIndex,
          'Tile index shlould not be greater total count',
-       ),
-       assert(
-         iconSize != null ? (iconSize / 2 - strokeWidth) > 0 : true,
-         'Stroke width is too small to draw center circle',
-       );
+       )
+      //  ,
+      //  assert(
+      //    iconSize != null ? (iconSize / 2 - lineStyle.strokeWidth) > 0 : true,
+      //    'Stroke width is too small to draw center circle',
+      //  )
+       ;
 
   final Widget child;
   final int tileIndex;
   final int totalCount;
-  final Color color;
   final Color backgroundColor;
   final double indicatorWidth = 50.0;
   final IconData? icon;
-
-  /// width of lines and inner circle
-  final double strokeWidth;
+  final ChainLineStyle lineStyle;
 
   /// defines width and height of center circle. if null -> no inner circle will be drawn
   final double? iconSize;
@@ -51,9 +50,8 @@ class ChainedTile extends StatelessWidget {
             width: indicatorWidth,
             child: CustomPaint(
               painter: ChainedPainter(
-                color: color,
+                lineStyle: lineStyle,
                 backgroundColor: backgroundColor,
-                strokeWidth: strokeWidth,
                 iconSize: iconSize,
                 tilePosition: TilePosition.positionBy(
                   index: tileIndex,
@@ -74,7 +72,7 @@ class ChainedTile extends StatelessWidget {
                 child: SizedBox(
                   child: Icon(
                     icon,
-                    color: color,
+                    color: lineStyle.color,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
