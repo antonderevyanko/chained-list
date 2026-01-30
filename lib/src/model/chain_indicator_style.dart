@@ -21,11 +21,20 @@ class CircleIndicatorStyle extends ChainIndicatorStyle {
 
 class IconIndicatorStyle extends ChainIndicatorStyle {
   IconIndicatorStyle({
-    required this.icon,
     required this.iconSize,
     required super.color,
-  });
+    this.iconData,
+    this.iconWidget,
+  }) : assert(
+         !(iconData != null && iconWidget != null),
+         'Only one of iconData or iconWidget may be not null',
+       ),
+       assert(
+         !(iconData == null && iconWidget == null),
+         'At least one of iconData or iconWidget should be not null',
+       );
 
-  final IconData icon;
+  final IconData? iconData;
+  final Widget? iconWidget;
   final double iconSize;
 }

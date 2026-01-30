@@ -61,12 +61,14 @@ class ChainedTile extends StatelessWidget {
             child: SizedBox(
               width: indicatorWidth,
               child: Center(
-                child: Icon(
-                  size: iconStyle!.iconSize,
-                  iconStyle!.icon,
-                  color: lineStyle.color,
-                  fontWeight: FontWeight.bold,
-                ),
+                child: iconStyle!.iconData != null
+                    ? Icon(
+                        size: iconStyle!.iconSize,
+                        iconStyle!.iconData,
+                        color: lineStyle.color,
+                        fontWeight: FontWeight.bold,
+                      )
+                    : iconStyle!.iconWidget!,
               ),
             ),
           ),
@@ -104,7 +106,7 @@ class ChainedTile extends StatelessWidget {
   double _getCenterPadding() {
     if (circleStyle == null && iconStyle == null) return 0;
     final circlePadding = circleStyle != null ? circleStyle!.radius / 2 : 0.0;
-    final iconPadding = iconStyle != null ? iconStyle!.iconSize / 2: 0.0;
+    final iconPadding = iconStyle != null ? iconStyle!.iconSize / 2 : 0.0;
     return max(circlePadding, iconPadding);
   }
 }

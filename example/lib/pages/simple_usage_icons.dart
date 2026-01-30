@@ -29,11 +29,21 @@ class TimelineScreenIcons extends StatelessWidget {
               color: index < 5 ? Colors.green : Colors.blue,
               strokeWidth: 4,
             ),
-            iconStyle: IconIndicatorStyle(
-              icon: items[index].icon,
-              iconSize: 24,
-              color: index < 5 ? Colors.green : Colors.blue,
-            ),
+            iconStyle: index != 0
+                ? IconIndicatorStyle(
+                    iconData: items[index].icon,
+                    iconSize: 24,
+                    color: index < 5 ? Colors.green : Colors.blue,
+                  )
+                : null,
+            circleStyle: index >= 5
+                ? CircleIndicatorStyle(
+                    paintingStyle: PaintingStyle.stroke,
+                    strokeWidth: 4,
+                    radius: 28,
+                    color: Colors.blue,
+                  )
+                : null,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
