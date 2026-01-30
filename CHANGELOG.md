@@ -1,3 +1,7 @@
-## 0.0.1
+## [0.0.1] - 30 Jan 2026
 
-* TODO: Describe initial release.
+* Initial Release. Custom Flutter widgets which simplifies building lists with visually connected items.
+
+Features:
+1. ChainedTile
+2. DoubleChainedTile

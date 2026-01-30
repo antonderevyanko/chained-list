@@ -1,7 +1,7 @@
 name: chained_list
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: "Flutter List tiles with visual connection"
+version: 0.8.0
+homepage: https://github.com/antonderevyanko/chained-list
 
 environment:
   sdk: ^3.9.2
