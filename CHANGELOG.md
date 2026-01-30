@@ -1,4 +1,4 @@
-## [0.0.1] - 30 Jan 2026
+## [0.8.0] - 30 Jan 2026
 
 * Initial Release. Custom Flutter widgets which simplifies building lists with visually connected items.
 
