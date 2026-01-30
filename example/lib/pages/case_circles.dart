@@ -1,8 +1,8 @@
 import 'package:chained_list/chained_list.dart';
 import 'package:flutter/material.dart';
 
-class TimelineScreenCircles extends StatelessWidget {
-  const TimelineScreenCircles({super.key});
+class CaseCircles extends StatelessWidget {
+  const CaseCircles({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TimelineScreenCircles extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Text('Order Tracking')),
+      appBar: AppBar(title: Text('Order Tracking (Circles)')),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -27,13 +27,13 @@ class TimelineScreenCircles extends StatelessWidget {
             totalCount: items.length,
             lineStyle: ChainLineStyle(
               color: index < 5 ? Colors.green : Colors.blue,
-              strokeWidth: 5,
+              strokeWidth: 4,
             ),
             circleStyle: CircleIndicatorStyle(
               paintingStyle: index < 5 ? PaintingStyle.fill : PaintingStyle.stroke,
-              radius: 25,
+              radius: 22,
               color: index < 5 ? Colors.green : Colors.blue,
-              strokeWidth: 5
+              strokeWidth: 4
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

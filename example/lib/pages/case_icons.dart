@@ -1,8 +1,8 @@
 import 'package:chained_list/chained_list.dart';
 import 'package:flutter/material.dart';
 
-class TimelineScreenIcons extends StatelessWidget {
-  const TimelineScreenIcons({super.key});
+class CaseIcons extends StatelessWidget {
+  const CaseIcons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +32,15 @@ class TimelineScreenIcons extends StatelessWidget {
             iconStyle: index != 0
                 ? IconIndicatorStyle(
                     iconData: items[index].icon,
-                    iconSize: 24,
+                    iconSize: index < 5 ? 25 : 20,
                     color: index < 5 ? Colors.green : Colors.blue,
                   )
                 : null,
             circleStyle: index >= 5
                 ? CircleIndicatorStyle(
                     paintingStyle: PaintingStyle.stroke,
-                    strokeWidth: 4,
-                    radius: 28,
+                    strokeWidth: 3,
+                    radius: 25,
                     color: Colors.blue,
                   )
                 : null,

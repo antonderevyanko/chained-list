@@ -1,6 +1,7 @@
+import 'package:example/pages/case_custom_icons.dart';
 import 'package:example/pages/double_chained_usage.dart';
-import 'package:example/pages/simple_usage_circles.dart';
-import 'package:example/pages/simple_usage_icons.dart';
+import 'package:example/pages/case_circles.dart';
+import 'package:example/pages/case_icons.dart';
 import 'package:flutter/material.dart';
 
 class LibraryExample {
@@ -18,11 +19,15 @@ class HomePage extends StatelessWidget {
     final List<LibraryExample> examples = [
       LibraryExample(
         title: 'Basic Usage - lines and circles',
-        page: const TimelineScreenCircles(),
+        page: const CaseCircles(),
       ),
       LibraryExample(
         title: 'Basic Usage - lines and icons',
-        page: const TimelineScreenIcons(),
+        page: const CaseIcons(),
+      ),
+      LibraryExample(
+        title: 'Basic Usage - custom icon widget',
+        page: const CaseCustomIcons(),
       ),
       LibraryExample(
         title: 'Complex usage - different line styles',

@@ -7,7 +7,7 @@ class DoubleChainedUsage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Order Tracking')),
+      appBar: AppBar(title: Text('Startup (Dual lines)')),
       body: ListView.builder(
         itemCount: _dummyTimelineItems.length,
         itemBuilder: (context, index) {
