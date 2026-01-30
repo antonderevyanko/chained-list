@@ -65,7 +65,7 @@ class ChainedTile extends StatelessWidget {
                     ? Icon(
                         size: iconStyle!.iconSize,
                         iconStyle!.iconData,
-                        color: lineStyle.color,
+                        color: iconStyle!.color,
                         fontWeight: FontWeight.bold,
                       )
                     : iconStyle!.iconWidget!,

@@ -1,3 +1,4 @@
+import 'package:example/pages/double_chained_usage.dart';
 import 'package:example/pages/simple_usage_circles.dart';
 import 'package:example/pages/simple_usage_icons.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<LibraryExample> examples = [
-      LibraryExample(title: 'Basic Usage - lines and circles', page: const TimelineScreenCircles()),
-      LibraryExample(title: 'Basic Usage - lines and icons', page: const TimelineScreenIcons()),
+      LibraryExample(
+        title: 'Basic Usage - lines and circles',
+        page: const TimelineScreenCircles(),
+      ),
+      LibraryExample(
+        title: 'Basic Usage - lines and icons',
+        page: const TimelineScreenIcons(),
+      ),
+      LibraryExample(
+        title: 'Complex usage - different line styles',
+        page: const DoubleChainedUsage(),
+      ),
     ];
 
     return Scaffold(
