@@ -2,7 +2,13 @@
 
 Library which simplifies building lists in Flutter with visually connected items
 
-<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/Simulator%20Screenshot%20-%20iPhone%2016e%20-%202026-01-30%20at%2011.06.57.png?raw=true" height="500"/>
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/case-circles.png?raw=true" height="500"/>
+
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/case-icons.png?raw=true" height="500"/>
+
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/case-custom-icons.png?raw=true" height="500"/>
+
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/case-complex-lines.png?raw=true" height="500"/>
 
 Supports different lines\indicator styles
 
