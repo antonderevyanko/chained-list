@@ -2,7 +2,7 @@
 
 Library which simplifies building lists in Flutter with visually connected items
 
-<img src="https://github.com/ketanchoyal/custom_radio_grouped_button/raw/dev/ScreenShots/GroupButton.gif" alt="Grouped Button"/>
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/Simulator%20Screenshot%20-%20iPhone%2016e%20-%202026-01-30%20at%2011.06.57.png?raw=true"/>
 
 Supports different lines\indicator styles
 
@@ -24,7 +24,7 @@ Add the following to your `pubspec.yaml` file:
 
 # Styling indicators
 
-Indicators can be made by simple circles or by custom widgets:    
+Indicators can be made by simple circles:    
     
     class CircleIndicatorStyle extends ChainIndicatorStyle {
         CircleIndicatorStyle({
@@ -35,11 +35,13 @@ Indicators can be made by simple circles or by custom widgets:
         });
     }
 
+Or by custom widgets:    
+
     class IconIndicatorStyle extends ChainIndicatorStyle {
         IconIndicatorStyle({
             required this.iconSize,
             required super.color,
             this.iconData,
             this.iconWidget,
-    })
-}
+        })
+    }
