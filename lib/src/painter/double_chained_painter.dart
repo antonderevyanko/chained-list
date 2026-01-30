@@ -1,11 +1,9 @@
 import 'package:chained_list/chained_list.dart';
 import 'package:chained_list/src/extensions/dotted_line_x.dart';
-import 'package:chained_list/src/tile_position.dart';
 import 'package:flutter/material.dart';
 
 class DoubleChainedPainter extends CustomPainter {
   DoubleChainedPainter({
-    required this.tilePosition,
     required this.centerIconOffset,
     required this.verticalOffset,
     this.topLineStyle,
@@ -14,7 +12,6 @@ class DoubleChainedPainter extends CustomPainter {
 
   final ChainLineStyle? topLineStyle;
   final ChainLineStyle? bottomLineStyle;
-  final TilePosition tilePosition;
   final double centerIconOffset;
   final double verticalOffset;
 

@@ -12,8 +12,6 @@ class DoubleChainedUsage extends StatelessWidget {
         itemCount: _dummyTimelineItems.length,
         itemBuilder: (context, index) {
           return DoubleChainedTile(
-            tileIndex: index,
-            totalCount: _dummyTimelineItems.length,
             topLineStyle: _dummyTimelineItems[index].topLine,
             bottomLineStyle: _dummyTimelineItems[index].bottonLine,
             circleStyle: CircleIndicatorStyle(

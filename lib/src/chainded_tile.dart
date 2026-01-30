@@ -82,10 +82,6 @@ class ChainedTile extends StatelessWidget {
               child: CustomPaint(
                 painter: CirclePainter(
                   indicatorStyle: circleStyle!,
-                  tilePosition: TilePosition.positionBy(
-                    index: tileIndex,
-                    length: totalCount,
-                  ),
                 ),
               ),
             ),
