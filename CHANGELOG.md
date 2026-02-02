@@ -1,4 +1,4 @@
-## [0.8.5] - 02 Feb 2026
+## [0.8.1] - 02 Feb 2026
 
 * Leading item width now can be configured
 

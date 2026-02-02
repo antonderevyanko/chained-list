@@ -32,6 +32,7 @@ const ChainedTile(
     final ChainLineStyle lineStyle;            // line styling
     final CircleIndicatorStyle? circleStyle;   // circle decoration property
     final IconIndicatorStyle? iconStyle;       // custom icon can be IconData or Widget
+    this.indicatorWidth = 50.0,                // width of the leading item
 );
 ```
 
@@ -46,6 +47,7 @@ class DoubleChainedTile extends StatefulWidget {
     final ChainLineStyle? bottomLineStyle;     // and bottom lines
     final CircleIndicatorStyle? circleStyle;   // circle decoration property
     final IconIndicatorStyle? iconStyle;       // custom icon can be IconData or Widget
+    this.indicatorWidth = 50.0,                // width of the leading item
 }
 ```
 
