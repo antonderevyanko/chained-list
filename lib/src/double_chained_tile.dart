@@ -10,6 +10,7 @@ class DoubleChainedTile extends StatefulWidget {
   const DoubleChainedTile({
     super.key,
     required this.child,
+    this.indicatorWidth = 50.0,
     this.topLineStyle,
     this.bottomLineStyle,
     this.circleStyle,
@@ -21,13 +22,13 @@ class DoubleChainedTile extends StatefulWidget {
   final ChainLineStyle? bottomLineStyle;
   final CircleIndicatorStyle? circleStyle;
   final IconIndicatorStyle? iconStyle;
+  final double indicatorWidth;
 
   @override
   State<DoubleChainedTile> createState() => _DoubleChainedTileState();
 }
 
 class _DoubleChainedTileState extends State<DoubleChainedTile> {
-  final double indicatorWidth = 50.0;
 
   double _verticalOffset = 0;
 
@@ -60,7 +61,7 @@ class _DoubleChainedTileState extends State<DoubleChainedTile> {
           left: 0,
           right: null,
           child: SizedBox(
-            width: indicatorWidth,
+            width: widget.indicatorWidth,
             child: CustomPaint(
               painter: DoubleChainedPainter(
                 centerIconOffset: _getCenterPadding(),
@@ -77,7 +78,7 @@ class _DoubleChainedTileState extends State<DoubleChainedTile> {
             left: 0,
             right: null,
             child: SizedBox(
-              width: indicatorWidth,
+              width: widget.indicatorWidth,
               child: Center(
                 child: widget.iconStyle!.iconData != null
                     ? Icon(
@@ -96,7 +97,7 @@ class _DoubleChainedTileState extends State<DoubleChainedTile> {
             left: 0,
             right: null,
             child: SizedBox(
-              width: indicatorWidth,
+              width: widget.indicatorWidth,
               child: CustomPaint(
                 painter: CirclePainter(
                   indicatorStyle: widget.circleStyle!,
@@ -106,10 +107,9 @@ class _DoubleChainedTileState extends State<DoubleChainedTile> {
           ),
 
         Padding(
-          padding: EdgeInsets.only(left: indicatorWidth),
+          padding: EdgeInsets.only(left: widget.indicatorWidth),
           child: Container(
             constraints: const BoxConstraints(minHeight: 60),
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
             child: widget.child,
           ),
         ),

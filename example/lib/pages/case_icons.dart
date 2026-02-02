@@ -1,4 +1,5 @@
 import 'package:chained_list/chained_list.dart';
+import 'package:example/data/order_mock_data.dart';
 import 'package:flutter/material.dart';
 
 class CaseIcons extends StatelessWidget {
@@ -6,32 +7,21 @@ class CaseIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = [
-      _ItemData('Ordered', Icons.check_circle),
-      _ItemData('Waiting for payment', Icons.check_circle),
-      _ItemData('Payed', Icons.check_circle),
-      _ItemData('Processed', Icons.check_circle),
-      _ItemData('Shipped to local carrier', Icons.check_circle),
-      _ItemData('Arrived to logistic center', Icons.arrow_forward_rounded),
-      _ItemData('Out for delivery', Icons.arrow_forward_rounded),
-      _ItemData('Delivered', Icons.question_mark_rounded),
-    ];
-
     return Scaffold(
       appBar: AppBar(title: Text('Order Tracking (Icons)')),
       body: ListView.builder(
-        itemCount: items.length,
+        itemCount: orderDataIcons.length,
         itemBuilder: (context, index) {
           return ChainedTile(
             tileIndex: index,
-            totalCount: items.length,
+            totalCount: orderDataIcons.length,
             lineStyle: ChainLineStyle(
               color: index < 5 ? Colors.green : Colors.blue,
               strokeWidth: 4,
             ),
             iconStyle: index != 0
                 ? IconIndicatorStyle(
-                    iconData: items[index].icon,
+                    iconData: orderDataIcons[index].icon,
                     iconSize: index < 5 ? 25 : 20,
                     color: index < 5 ? Colors.green : Colors.blue,
                   )
@@ -48,7 +38,7 @@ class CaseIcons extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  items[index].text,
+                  orderDataIcons[index].text,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 Text(
@@ -62,11 +52,4 @@ class CaseIcons extends StatelessWidget {
       ),
     );
   }
-}
-
-class _ItemData {
-  final String text;
-  final IconData icon;
-
-  _ItemData(this.text, this.icon);
 }

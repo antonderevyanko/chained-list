@@ -13,6 +13,7 @@ class ChainedTile extends StatelessWidget {
     required this.tileIndex,
     required this.totalCount,
     required this.lineStyle,
+    this.indicatorWidth = 50.0,
     this.circleStyle,
     this.iconStyle,
   }) : assert(
@@ -27,7 +28,7 @@ class ChainedTile extends StatelessWidget {
   final Widget child;
   final int tileIndex;
   final int totalCount;
-  final double indicatorWidth = 50.0;
+  final double indicatorWidth;
   final ChainLineStyle lineStyle;
   final CircleIndicatorStyle? circleStyle;
   final IconIndicatorStyle? iconStyle;
@@ -91,7 +92,6 @@ class ChainedTile extends StatelessWidget {
           padding: EdgeInsets.only(left: indicatorWidth),
           child: Container(
             constraints: const BoxConstraints(minHeight: 60),
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
             child: child,
           ),
         ),
