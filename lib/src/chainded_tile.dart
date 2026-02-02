@@ -25,12 +25,27 @@ class ChainedTile extends StatelessWidget {
          'Tile index shlould not be greater total count',
        );
 
+  /// Main list item widget. Will be placed toright of leading indicator widget
   final Widget child;
+
+  /// Index of the item. Along with [totalCount] draws properly the first and the last item
+  /// (only bottom or top part of connecting line respectively)
   final int tileIndex;
+
+  /// The size of list. Along with [tileIndex] draws properly the first and the last item 
+  /// (only bottom or top part of connecting line respectively)
   final int totalCount;
+
+  /// Horizontal size of the indicator widget
   final double indicatorWidth;
+
+  /// The style of connection line
   final ChainLineStyle lineStyle;
+
+  /// If set - defines circle indicator drawing style
   final CircleIndicatorStyle? circleStyle;
+
+  /// If set - defines custom icon style
   final IconIndicatorStyle? iconStyle;
 
   @override

@@ -17,19 +17,29 @@ class DoubleChainedTile extends StatefulWidget {
     this.iconStyle,
   });
 
+  /// Main list item widget. Will be placed toright of leading indicator widget
   final Widget child;
-  final ChainLineStyle? topLineStyle;
-  final ChainLineStyle? bottomLineStyle;
-  final CircleIndicatorStyle? circleStyle;
-  final IconIndicatorStyle? iconStyle;
+
+  /// Horizontal size of the indicator widget
   final double indicatorWidth;
+
+  /// The top part of connection line
+  final ChainLineStyle? topLineStyle;
+
+  /// The bottom part of connection line
+  final ChainLineStyle? bottomLineStyle;
+
+  /// If set - defines circle indicator drawing style
+  final CircleIndicatorStyle? circleStyle;
+
+  /// If set - defines custom icon style
+  final IconIndicatorStyle? iconStyle;
 
   @override
   State<DoubleChainedTile> createState() => _DoubleChainedTileState();
 }
 
 class _DoubleChainedTileState extends State<DoubleChainedTile> {
-
   double _verticalOffset = 0;
 
   void _updateOffset() {

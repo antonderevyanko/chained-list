@@ -4,6 +4,9 @@ class DashParams {
     required this.dashGap,
   });
 
+  /// Length of the dash part of line
   final double dashHeight;
+
+  /// Length of gap betweem lines
   final double dashGap;
 }

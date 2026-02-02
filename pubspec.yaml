@@ -1,6 +1,6 @@
 name: chained_list
-description: "Flutter List tiles with visual connection"
-version: 0.8.0
+description: "Library for Flutter List tiles with visual connection. Provides convenient way of lists with leading 'metro-lines' widget."
+version: 0.8.5
 homepage: https://github.com/antonderevyanko/chained-list
 
 environment:
