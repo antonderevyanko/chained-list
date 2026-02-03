@@ -1,8 +1,6 @@
-import 'dart:math';
 
 import 'package:chained_list/chained_list.dart';
-import 'package:chained_list/src/painter/circe_painter.dart';
-import 'package:chained_list/src/painter/double_chained_painter.dart';
+import 'package:chained_list/src/widget/chained_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -65,76 +63,26 @@ class _DoubleChainedTileState extends State<DoubleChainedTile> {
     // We update the offset after the frame renders to ensure accuracy
     WidgetsBinding.instance.addPostFrameCallback((_) => _updateOffset());
 
-    return Stack(
-      children: [
-        Positioned.fill(
-          left: 0,
-          right: null,
-          child: SizedBox(
-            width: widget.indicatorWidth,
-            child: CustomPaint(
-              painter: DoubleChainedPainter(
-                centerIconOffset: _getCenterPadding(),
-                topLineStyle: widget.topLineStyle,
-                bottomLineStyle: widget.bottomLineStyle,
-                verticalOffset: _verticalOffset,
-              ),
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ChainedIndicator(
+            topLineStyle: widget.topLineStyle,
+            bottomLineStyle: widget.bottomLineStyle,
+            circleStyle: widget.circleStyle,
+            iconStyle: widget.iconStyle,
+            indicatorWidth: widget.indicatorWidth,
+            verticalOffset: _verticalOffset,
+          ),
+          Flexible(
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 60),
+              child: widget.child,
             ),
           ),
-        ),
-
-        if (widget.iconStyle != null)
-          Positioned.fill(
-            left: 0,
-            right: null,
-            child: SizedBox(
-              width: widget.indicatorWidth,
-              child: Center(
-                child: widget.iconStyle!.iconData != null
-                    ? Icon(
-                        size: widget.iconStyle!.iconSize,
-                        widget.iconStyle!.iconData,
-                        color: widget.iconStyle!.color,
-                        fontWeight: FontWeight.bold,
-                      )
-                    : widget.iconStyle!.iconWidget!,
-              ),
-            ),
-          ),
-
-        if (widget.circleStyle != null)
-          Positioned.fill(
-            left: 0,
-            right: null,
-            child: SizedBox(
-              width: widget.indicatorWidth,
-              child: CustomPaint(
-                painter: CirclePainter(
-                  indicatorStyle: widget.circleStyle!,
-                ),
-              ),
-            ),
-          ),
-
-        Padding(
-          padding: EdgeInsets.only(left: widget.indicatorWidth),
-          child: Container(
-            constraints: const BoxConstraints(minHeight: 60),
-            child: widget.child,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
-  }
-
-  double _getCenterPadding() {
-    if (widget.circleStyle == null && widget.iconStyle == null) return 0;
-    final circlePadding = widget.circleStyle != null
-        ? widget.circleStyle!.radius / 2
-        : 0.0;
-    final iconPadding = widget.iconStyle != null
-        ? widget.iconStyle!.iconSize / 2
-        : 0.0;
-    return max(circlePadding, iconPadding);
   }
 }

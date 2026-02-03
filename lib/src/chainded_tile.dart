@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:chained_list/chained_list.dart';
-import 'package:chained_list/src/painter/chained_painter.dart';
-import 'package:chained_list/src/painter/circe_painter.dart';
 import 'package:chained_list/src/tile_position.dart';
+import 'package:chained_list/src/widget/chained_indicator.dart';
 import 'package:flutter/material.dart';
 
 class ChainedTile extends StatelessWidget {
@@ -32,7 +29,7 @@ class ChainedTile extends StatelessWidget {
   /// (only bottom or top part of connecting line respectively)
   final int tileIndex;
 
-  /// The size of list. Along with [tileIndex] draws properly the first and the last item 
+  /// The size of list. Along with [tileIndex] draws properly the first and the last item
   /// (only bottom or top part of connecting line respectively)
   final int totalCount;
 
@@ -50,74 +47,45 @@ class ChainedTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          left: 0,
-          right: null,
-          child: SizedBox(
-            width: indicatorWidth,
-            child: CustomPaint(
-              painter: ChainedPainter(
-                lineStyle: lineStyle,
-                centerPadding: _getCenterPadding(),
-                tilePosition: TilePosition.positionBy(
-                  index: tileIndex,
-                  length: totalCount,
-                ),
-              ),
+    final tilePosition = TilePosition.positionBy(
+      index: tileIndex,
+      length: totalCount,
+    );
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ChainedIndicator(
+            topLineStyle: _getTopLineStyle(tilePosition),
+            bottomLineStyle: _getBottonLineStyle(tilePosition),
+            circleStyle: circleStyle,
+            iconStyle: iconStyle,
+            indicatorWidth: indicatorWidth,
+          ),
+          Flexible(
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 60),
+              child: child,
             ),
           ),
-        ),
-
-        if (iconStyle != null)
-          Positioned.fill(
-            left: 0,
-            right: null,
-            child: SizedBox(
-              width: indicatorWidth,
-              child: Center(
-                child: iconStyle!.iconData != null
-                    ? Icon(
-                        size: iconStyle!.iconSize,
-                        iconStyle!.iconData,
-                        color: iconStyle!.color,
-                        fontWeight: FontWeight.bold,
-                      )
-                    : iconStyle!.iconWidget!,
-              ),
-            ),
-          ),
-
-        if (circleStyle != null)
-          Positioned.fill(
-            left: 0,
-            right: null,
-            child: SizedBox(
-              width: indicatorWidth,
-              child: CustomPaint(
-                painter: CirclePainter(
-                  indicatorStyle: circleStyle!,
-                ),
-              ),
-            ),
-          ),
-
-        Padding(
-          padding: EdgeInsets.only(left: indicatorWidth),
-          child: Container(
-            constraints: const BoxConstraints(minHeight: 60),
-            child: child,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-  double _getCenterPadding() {
-    if (circleStyle == null && iconStyle == null) return 0;
-    final circlePadding = circleStyle != null ? circleStyle!.radius / 2 : 0.0;
-    final iconPadding = iconStyle != null ? iconStyle!.iconSize / 2 : 0.0;
-    return max(circlePadding, iconPadding);
-  }
+  ChainLineStyle? _getTopLineStyle(TilePosition tilePosition) =>
+      switch (tilePosition) {
+        TilePosition.first => null,
+        TilePosition.last => lineStyle,
+        TilePosition.middle => lineStyle,
+        TilePosition.theOnly => null,
+      };
+
+  ChainLineStyle? _getBottonLineStyle(TilePosition tilePosition) =>
+      switch (tilePosition) {
+        TilePosition.first => lineStyle,
+        TilePosition.last => null,
+        TilePosition.middle => lineStyle,
+        TilePosition.theOnly => null,
+      };
 }

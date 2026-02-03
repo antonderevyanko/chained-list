@@ -1,6 +1,6 @@
 # chained_list 
 
-Library which simplifies building lists in Flutter with visually connected items
+A Flutter library that simplifies building vertical lists with visually connected items, such as timelines, process trackers, or step-by-step guides.
 
 |Circles and IconData	|Custom Icons		|Complex lines		|
 |:------------:|:------------:|:-------------:|
@@ -17,12 +17,16 @@ Add the following to your `pubspec.yaml` file:
 
 # Usage
 
-The basic idea is to provide list-tile widget wich helps to draw special leading item, displayed as indicator widget at center with vertical lines. Library provides two main tile-widgets: ChainedTile and DoubleChainedTile. 
+The library provides a specialized "leading" widget that renders an indicator (circle/icon) with vertical connection lines.
+
+There are two ways to implement this:
+1) __High-Level Tiles__: Use `ChainedTile` or `DoubleChainedTile` for automatic layout.
+2) __Low-Level Indicator__: Use `ChainedIndicator` directly if you need full control over placement (requires manual sizing).
 
 
 ## ChainedTile
 
-May be used for the cases where vertical line inside 'chain' widget should has constant style. It can be configured to have different line styles, to have icon indicator and circle decoration if needed.
+Use this when the line style above and below the indicator remains the same. It automatically handles hiding the top line for the first item and the bottom line for the last item.
 
 ```dart
 const ChainedTile(
@@ -36,9 +40,9 @@ const ChainedTile(
 );
 ```
 
-## Styling indicators
+## DoubleChainedTile
 
-Should be used for the cases when a line connection between two tiles should be constant. In this case it is may be needed to set different styles for 'top' and 'bottom' parts of line inside a tile.
+Use this when you need __different styles__ for the top and bottom lines within a single tile (e.g., a "completed" step connecting to an "in-progress" step).
 
 ```dart
 class DoubleChainedTile extends StatefulWidget {
@@ -50,6 +54,25 @@ class DoubleChainedTile extends StatefulWidget {
     this.indicatorWidth = 50.0,                // width of the leading item
 }
 ```
+
+### ChainedIndicator
+
+Direct usage of `ChainedIndicator` gives more control of indicator placement and sizing. But this widget should be placed in parent widget with concrete height and width sizes. 
+
+```dart
+class ChainedIndicator extends StatelessWidget {
+  final double indicatorWidth;              // Horizontal size of the indicator widget
+  final ChainLineStyle? topLineStyle;       // The top part of connection line
+  final ChainLineStyle? bottomLineStyle;    // The bottom part of connection line
+  final CircleIndicatorStyle? circleStyle;  // If set - defines circle indicator drawing style
+  final IconIndicatorStyle? iconStyle;      // If set - defines custom icon style
+  final double verticalOffset;              // Used for dash-pattern synchronization
+}
+```
+
+#### Pro-Tip: Vertical Synchronization
+
+The verticalOffset property is crucial for __dashed lines__. Since list items often have different heights, the dash pattern might "break" between tiles. Passing the cumulative height/offset ensures the dashes connect smoothly from one tile to the next.
 
 # Future plans
 

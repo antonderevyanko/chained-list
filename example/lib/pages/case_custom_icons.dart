@@ -36,18 +36,21 @@ class CaseCustomIcons extends StatelessWidget {
               color: index < 5 ? Colors.green : Colors.blue,
               strokeWidth: 3,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  orderDataIcons[index].text,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                Text(
-                  'Update received at ${12 + index}:00 PM',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ],
+            child: Padding(
+              padding: EdgeInsetsGeometry.symmetric(vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    orderDataIcons[index].text,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  Text(
+                    'Update received at ${12 + index}:00 PM',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
             ),
           );
         },
