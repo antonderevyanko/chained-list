@@ -1,3 +1,7 @@
+## [0.8.2] - 03 Feb 2026
+
+* `ChainedIndicator` can be used directly to place this widget where it needed
+
 ## [0.8.1] - 02 Feb 2026
 
 * Leading item width now can be configured
