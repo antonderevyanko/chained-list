@@ -1,6 +1,5 @@
 
 import 'package:chained_list/chained_list.dart';
-import 'package:chained_list/src/widget/chained_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

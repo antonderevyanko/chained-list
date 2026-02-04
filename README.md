@@ -1,4 +1,6 @@
-# chained_list 
+# Chained List: Create Beautiful Timelines and Step-by-Step Lists in Flutter
+
+[![pub package](https://img.shields.io/pub/v/chained_list.svg)](https://pub.dev/packages/chained_list)
 
 A Flutter library that simplifies building vertical lists with visually connected items, such as timelines, process trackers, or step-by-step guides.
 
@@ -12,8 +14,12 @@ Supports different lines\indicator styles.
 
 Add the following to your `pubspec.yaml` file:
 
-    dependencies:
-      chained_list: any
+```yaml
+dependencies:
+  chained_list: ^<latest_version>
+```
+
+Then run `flutter pub get`.
 
 # Usage
 
@@ -26,7 +32,7 @@ There are two ways to implement this:
 
 ## ChainedTile
 
-Use this when the line style above and below the indicator remains the same. It automatically handles hiding the top line for the first item and the bottom line for the last item.
+Use this when the line style above and below the indicator is the same. It automatically handles the top and bottom lines for the first and last items.
 
 ```dart
 const ChainedTile(
@@ -74,7 +80,15 @@ class ChainedIndicator extends StatelessWidget {
 
 The verticalOffset property is crucial for __dashed lines__. Since list items often have different heights, the dash pattern might "break" between tiles. Passing the cumulative height/offset ensures the dashes connect smoothly from one tile to the next.
 
-# Future plans
+## Future plans
 
 1. Left/Right setting
 2. More styling (?)
+
+## Contributing
+
+Contributions are welcome! If you find a bug or have a feature request, please open an issue on the [GitHub repository](https://github.com/antonderevyanko/chained-list).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
