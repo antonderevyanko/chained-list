@@ -1,4 +1,4 @@
-# Chained List: Create Beautiful Timelines and Step-by-Step Lists in Flutter
+# Chained List: Timelines and Step-by-Step Lists in Flutter
 
 [![pub package](https://img.shields.io/pub/v/chained_list.svg)](https://pub.dev/packages/chained_list)
 
