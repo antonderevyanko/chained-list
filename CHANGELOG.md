@@ -1,3 +1,8 @@
+## [0.8.3] - 23 Mar 2026
+
+* Minor doc and styling
+
+
 ## [0.8.2] - 03 Feb 2026
 
 * `ChainedIndicator` can be used directly to place this widget where it needed
