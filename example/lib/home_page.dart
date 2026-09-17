@@ -1,5 +1,6 @@
-import 'package:example/main.dart';
+import 'package:example/pages/case_circles.dart';
 import 'package:example/pages/case_custom_icons.dart';
+import 'package:example/pages/case_dual_lines.dart';
 import 'package:example/pages/case_icons.dart';
 import 'package:example/pages/direct_indicator_usage.dart';
 import 'package:flutter/material.dart';

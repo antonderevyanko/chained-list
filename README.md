@@ -34,6 +34,9 @@ There are two ways to implement this:
 
 Use this when the line style above and below the indicator is the same. It automatically handles the top and bottom lines for the first and last items.
 
+![exaple of single-styled item](./screenshot/single_style.png)
+
+
 ```dart
 const ChainedTile(
     final Widget child;                        // main list item content
@@ -49,6 +52,8 @@ const ChainedTile(
 ## DoubleChainedTile
 
 Use this when you need __different styles__ for the top and bottom lines within a single tile (e.g., a "completed" step connecting to an "in-progress" step).
+
+![exaple of double chained item](./screenshot/double_style.png)
 
 ```dart
 class DoubleChainedTile extends StatefulWidget {
