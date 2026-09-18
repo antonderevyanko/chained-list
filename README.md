@@ -33,8 +33,7 @@ There are two ways to implement this:
 
 Use this when the line style above and below the indicator is the same. It automatically handles the top and bottom lines for the first and last items.
 
-![exaple of single-styled item](./screenshot/single_style.png)
-
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/single_style.png?raw=true" width="500"/>
 
 ```dart
 const ChainedTile(
@@ -52,7 +51,7 @@ const ChainedTile(
 
 Use this when you need __different styles__ for the top and bottom lines within a single tile (e.g., a "completed" step connecting to an "in-progress" step).
 
-![exaple of double chained item](./screenshot/double_style.png)
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/double_style.png?raw=true" width="500"/>
 
 ```dart
 class DoubleChainedTile extends StatefulWidget {
@@ -94,7 +93,7 @@ TailData {
 
 This class is helpful to process items as center icon + bottom line. 
 
-![exaple of double chained item](./screenshot/tailed_chain.png)
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/tailed_chain.png?raw=true" width="500"/>
 
 So, for the first item in the list there will be to upper tail, just lower one. A middle item will have both center icon and tail and the last one will have only center icon without line. As always, `indicatorWidth` represents with of all items and should be bigger then centered icon.
 
