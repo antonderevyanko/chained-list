@@ -1,3 +1,9 @@
+## [0.9.0] - 18 Sep 2026
+
+* New way of building chained list - using `TailData` data class to prepare a list and convert it to `ChainedIndicator`
+* Updated documentation
+* Minor improvements
+
 ## [0.8.3] - 23 Mar 2026
 
 * Minor doc and styling
