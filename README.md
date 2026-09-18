@@ -29,10 +29,11 @@ There are two ways to implement this:
 1) __High-Level Tiles__: Use `ChainedTile` or `DoubleChainedTile` for automatic layout.
 2) __Low-Level Indicator__: Use `ChainedIndicator` directly if you need full control over placement (requires manual sizing).
 
-
 ## ChainedTile
 
 Use this when the line style above and below the indicator is the same. It automatically handles the top and bottom lines for the first and last items.
+
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/single_style.png?raw=true" width="500"/>
 
 ```dart
 const ChainedTile(
@@ -49,6 +50,8 @@ const ChainedTile(
 ## DoubleChainedTile
 
 Use this when you need __different styles__ for the top and bottom lines within a single tile (e.g., a "completed" step connecting to an "in-progress" step).
+
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/double_style.png?raw=true" width="500"/>
 
 ```dart
 class DoubleChainedTile extends StatefulWidget {
@@ -76,14 +79,52 @@ class ChainedIndicator extends StatelessWidget {
 }
 ```
 
+## TailData
+
+Also for easier library usage it is possible to take `TailData` helper class.
+
+```dart
+TailData {
+  final double indicatorWidth;          /// Horizontal size of the indicator widget
+  final ChainLineStyle lineStyle;       /// The style of connection line
+  final IconIndicatorStyle? iconStyle;  /// If set - defines custom icon style
+  }
+```
+
+This class is helpful to process items as center icon + bottom line. 
+
+<img src="https://github.com/antonderevyanko/chained-list/blob/main/screenshot/tailed_chain.png?raw=true" width="500"/>
+
+So, for the first item in the list there will be to upper tail, just lower one. A middle item will have both center icon and tail and the last one will have only center icon without line. As always, `indicatorWidth` represents with of all items and should be bigger then centered icon.
+
+### Usage
+
+As `TailData` is simple data-class, it cannot be directly used in widget tree. There is helper `convertToTiles()` function which converts it to properly configured ChainedIndicator list. 
+
+As real ChainedIndicator item depends on two subsequental items of TailData, to use `convertToTiles` user need to pass all items while mapping one TailData to ChainedIndicator:
+
+```dart
+for (var i = 0; i < tailedItems.length; i++) {
+      final item = tailedItems[i];
+      resultList.add(
+        item.convertToTiles(
+          index: i,
+          allTails: tailedItems,
+          child: getByIndex(i),
+        ),
+      );
+    }
+```
+
+or use `.mapIndexed()` from the collection library.
+
 #### Pro-Tip: Vertical Synchronization
 
 The verticalOffset property is crucial for __dashed lines__. Since list items often have different heights, the dash pattern might "break" between tiles. Passing the cumulative height/offset ensures the dashes connect smoothly from one tile to the next.
 
 ## Future plans
 
-1. Left/Right setting
-2. More styling (?)
+Left/Right setting
 
 ## Contributing
 

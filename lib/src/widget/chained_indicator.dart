@@ -106,6 +106,6 @@ class ChainedIndicator extends StatelessWidget {
     if (circleStyle == null && iconStyle == null) return 0;
     final circlePadding = circleStyle != null ? circleStyle!.radius / 2 : 0.0;
     final iconPadding = iconStyle != null ? iconStyle!.iconSize / 2 : 0.0;
-    return max(circlePadding, iconPadding);
+    return max(circlePadding, iconPadding) - 1.8;
   }
 }
