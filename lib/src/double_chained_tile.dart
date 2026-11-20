@@ -1,6 +1,6 @@
 
 import 'package:chained_list/chained_list.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/rendering.dart';
 
 class DoubleChainedTile extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:chained_list/chained_list.dart';
 import 'package:chained_list/src/extensions/dotted_line_x.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class DoubleChainedPainter extends CustomPainter {
   DoubleChainedPainter({
