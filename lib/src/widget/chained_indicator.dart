@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:chained_list/chained_list.dart';
 import 'package:chained_list/src/painter/circe_painter.dart';
 import 'package:chained_list/src/painter/double_chained_painter.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class ChainedIndicator extends StatelessWidget {
   const ChainedIndicator({

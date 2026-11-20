@@ -1,6 +1,6 @@
 import 'package:chained_list/chained_list.dart';
 import 'package:chained_list/src/tile_position.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class ChainedPainter extends CustomPainter {
   ChainedPainter({

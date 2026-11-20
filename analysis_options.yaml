@@ -11,6 +11,7 @@ analyzer:
     - '**/*.g.dart'
     - '**/*.i69n.dart'
     - 'mason_creator/**'
+    - build/**
 
   language:
     strict-casts: true

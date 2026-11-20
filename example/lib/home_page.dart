@@ -4,7 +4,7 @@ import 'package:example/pages/case_dual_lines.dart';
 import 'package:example/pages/case_icons.dart';
 import 'package:example/pages/case_tailed_list.dart';
 import 'package:example/pages/direct_indicator_usage.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class LibraryExample {
   final String title;

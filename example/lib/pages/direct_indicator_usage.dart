@@ -1,5 +1,5 @@
 import 'package:chained_list/chained_list.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class DirectChainIndicatorUsage extends StatelessWidget {
   const DirectChainIndicatorUsage({super.key});

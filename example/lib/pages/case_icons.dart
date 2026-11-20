@@ -1,6 +1,6 @@
 import 'package:chained_list/chained_list.dart';
 import 'package:example/data/order_mock_data.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class CaseIcons extends StatelessWidget {
   const CaseIcons({super.key});
