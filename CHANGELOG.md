@@ -1,3 +1,7 @@
+## [1.0.0] - 20 Nov 2026
+
+* Migration to `material_ui` package and prepaing to Flutter 3.47 [documentation](https://flutter.dev/blog/whats-new-in-flutter-3-47)
+
 ## [0.9.0] - 18 Sep 2026
 
 * New way of building chained list - using `TailData` data class to prepare a list and convert it to `ChainedIndicator`
